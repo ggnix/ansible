@@ -1,0 +1,9 @@
+---
+- hosts: localhost
+  connection: local
+  vars:
+     contents: "{{ lookup('vault', 'secret/hello').value }}"
+  tasks:
+  - name: Write to file
+    local_action: copy content="{{ contents }}" dest="/home/gleb/file"  
+
